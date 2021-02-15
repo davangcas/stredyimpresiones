@@ -25,7 +25,7 @@ SECRET_KEY = 't$bi0%p7zcufv*8&&&2_l+y8!=3*xc2*aa#lr#x5jl++@$m%)3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-LOCAL_DEPLOY = True
+LOCAL_DEPLOY = False
 
 ALLOWED_HOSTS = []
 
