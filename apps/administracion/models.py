@@ -6,7 +6,7 @@ from apps.administracion.Views.Pedido.options import *
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(verbose_name="Avatar", upload_to="avatar/%y/%m/", default='avatar\default\default_avatar.png',blank=True, null=True)
+    avatar = models.ImageField(verbose_name="Avatar", upload_to="avatar/%y/%m/", default='avatar/default/default_avatar.png', blank=True, null=True)
     salary = models.DecimalField(verbose_name="Sueldo", max_digits=30, decimal_places=2)
     rol = models.CharField(max_length=20)
     amount = models.DecimalField(verbose_name="Monto en posesión", max_digits=30, decimal_places=2)
