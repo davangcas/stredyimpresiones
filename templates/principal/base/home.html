@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <!-- basic -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- mobile metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <!-- site metas -->
+        <title>{{title}}</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="Ángel David Castro">
+
+        {% include 'principal/base/css.html' %}
+
+        {% block css %}
+        {% endblock %}
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+    </head>
+    <body id="default_theme" class="it_service">
+        <!-- loader -->
+        <div class="bg_load"> <img class="loader_animation" src="{% static 'administracion\img\Blaster.png' %}" alt="#" /> </div>
+        <!-- end loader -->
+        {% include 'principal/base/header.html' %}
+        
+        {% block content %}
+        {% endblock %}
+        
+        {% include 'principal/base/footer.html' %}
+        
+        {% include 'principal/base/scripts.html' %}
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

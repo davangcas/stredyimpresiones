@@ -1,0 +1,19 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:clientes_new' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.name}}</td>
+        <td>{{obj.phone}}</td>
+        <td>{{obj.description}}</td>
+        <td class="actions">
+            <a href="{% url 'administracion:clientes_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar Cliente"><i class="fa fa-pencil"></i></a>
+            <a href="" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Ver detalles"><i class="fa fa-eye"></i></a>
+            <a href="{% url 'administracion:pedidos_cliente_new' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Nuevo pedido"><i class="fa fa-shopping-cart"></i></a>
+        </td>
+    </tr>
+{% endblock %}

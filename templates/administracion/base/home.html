@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="fixed sidebar-left-collapsed">
+    {% load static %}
+    <head>
+        <title>{{ title }}</title>
+        <meta charset="UTF-8">
+        
+		<meta name="keywords" content="Falen - Impresiones 3D" />
+		<meta name="description" content="Falen 3D Admin">
+		<meta name="author" content="Angel David Castro">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'lib\fontawesome-free\css\all.min.css' %}">
+
+        <!--Vendor Css-->
+
+        <link rel="stylesheet" href="{% static 'lib/octopus/assets/vendor/bootstrap/css/bootstrap.css' %}" />
+		<link rel="stylesheet" href="{% static 'lib/octopus/assets/vendor/font-awesome/css/font-awesome.css' %}" />
+		<link rel="stylesheet" href="{% static 'lib/octopus/assets/vendor/magnific-popup/magnific-popup.css' %}" />
+        <link rel="stylesheet" href="{% static 'lib/octopus/assets/vendor/bootstrap-datepicker/css/datepicker3.css' %}" />
+
+        <link rel='shortcut icon' href="{% static 'administracion\img\Blaster3d.png' %}">
+
+        <!-- Theme CSS -->
+		<link rel="stylesheet" href="{% static 'lib/octopus/assets/stylesheets/theme.css' %}" />
+
+        <!-- Skin CSS -->
+		<link rel="stylesheet" href="{% static 'lib/octopus/assets/stylesheets/skins/default.css' %}" />
+        <link rel="stylesheet" href="{% static 'administracion/css/index.css' %}">
+        <script src="{% static 'lib/octopus/assets/vendor/modernizr/modernizr.js' %}"></script>
+        
+        {% block ccs %}
+        {% endblock %}
+
+    </head>
+    <body>
+        <section class="body">
+            {% include 'administracion/base/header.html' %}
+            <div class="inner-wrapper">
+                {% include 'administracion/base/nav.html' %}
+                <section role="main" class="content-body">
+                    <header class="page-header">
+                        <a href="{{url_to_redirect}}">
+                            <h2>{{ title }}</h2>
+                        </a>
+                    </header>
+                    {% block content %}
+                    {% endblock %}
+                    <footer class="text-center">
+                        <small>&copy; Copyright 2020. Todos los derechos reservados.</small>
+                        <br>
+                        <small>Ángel David Castro - 3804567717</small>
+                    </footer>
+                </section>
+            </div>
+        </section>
+
+        <!--Vendor Scripts-->
+
+        <script src="{% static 'lib/octopus/assets/vendor/jquery/jquery.js' %}"></script>
+		<script src="{% static 'lib/octopus/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js' %}"></script>
+		<script src="{% static 'lib/octopus/assets/vendor/bootstrap/js/bootstrap.js' %}"></script>
+		<script src="{% static 'lib/octopus/assets/vendor/nanoscroller/nanoscroller.js' %}"></script>
+		<script src="{% static 'lib/octopus/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+		<script src="{% static 'lib/octopus/assets/vendor/magnific-popup/magnific-popup.js' %}"></script>
+        <script src="{% static 'lib/octopus/assets/vendor/jquery-placeholder/jquery.placeholder.js' %}"></script>
+
+        <!--Specific Scripts-->
+
+        {% block scripts %}
+        {% endblock %}
+
+        <!--Init scripts-->
+
+        <script src="{% static 'lib/octopus/assets/javascripts/theme.js' %}"></script>
+        <script src="{% static 'lib/octopus/assets/javascripts/theme.init.js' %}"></script>
+        
+        {% block example_script %}
+        {% endblock %}
+
+    </body>
+</html>

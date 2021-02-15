@@ -1,0 +1,44 @@
+{% load static %}
+<header class="header">
+    <div class="logo-container">
+        <a href="{% url 'principal:index' %}" class="logo">
+            <img src="{% static 'administracion\img\Blaster.png' %}" height="35" alt="Porto Admin" class="blaster-logo"/>
+        </a>
+        <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+
+    <!-- start: search & user box -->
+    <div class="header-right">
+        <span class="separator"></span>
+        <span class="separator"></span>
+
+        <div id="userbox" class="userbox">
+            <a href="" data-toggle="dropdown">
+                <figure class="profile-picture">
+                    <img src="{{ request.user.profile.avatar.url }}" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+                </figure>
+                <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+                    <span class="name">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+                    <span class="role">{{ request.user.profile.rol }}</span>
+                </div>
+
+                <i class="fa custom-caret"></i>
+            </a>
+
+            <div class="dropdown-menu">
+                <ul class="list-unstyled">
+                    <li class="divider"></li>
+                    <li>
+                        <a role="menuitem" tabindex="-1" href="{% url 'administracion:password_change' %}"><i class="fa fa-lock"></i> Cambiar contraseña</a>
+                    </li>
+                    <li>
+                        <a role="menuitem" tabindex="-1" href="{% url 'administracion:logout' %}"><i class="fa fa-power-off"></i> Cerrar Sesi&oacute;n</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end: search & user box -->
+</header>

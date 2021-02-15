@@ -1,0 +1,73 @@
+{% extends 'administracion/base/home.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                    </div>
+
+                    <h2 class="panel-title">{{ title }}</h2>
+                </header>
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered" method="post">{% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.hs_per_day.label}}</label>
+                            <div class="col-md-6">
+                                {{form.hs_per_day}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.print_days.label}}</label>
+                            <div class="col-md-6">
+                                {{form.print_days}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.watts.label}}</label>
+                            <div class="col-md-6">
+                                <div class="input-group mb-md">
+                                    {{form.watts}}
+                                    <span class="input-group-addon btn-primary">W</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.edelar.label}}</label>
+                            <div class="col-md-6">
+                                <div class="input-group mb-md">
+                                    <span class="input-group-addon">$</span>
+                                    {{form.edelar}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.machines.label}}</label>
+                            <div class="col-md-6">
+                                {{form.machines}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.fail_percentage.label}}</label>
+                            <div class="col-md-6">
+                                <div class="input-group mb-md">
+                                    {{form.fail_percentage}}
+                                    <span class="input-group-addon btn-warning">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button class="btn btn-primary">{{ action_button }}</button>
+                                <button type="reset" class="btn btn-default">Borrar Campos</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

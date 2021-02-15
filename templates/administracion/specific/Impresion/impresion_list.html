@@ -1,0 +1,91 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:impresion_new' id_producto %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.hs}}</td>
+        <td>{{obj.mins}}</td>
+        <td>{{obj.grs}}</td>
+        <td>{{obj.material.name}}</td>
+        <td>{{obj.nozzle}}</td>
+        <td>{{obj.infill}}</td>
+        <td>{{obj.speed}}</td>
+        <td>{{obj.layer}}</td>
+        <td class="actions">
+            <a href="{% url 'administracion:impresion_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar datos de impresion"><i class="fa fa-pencil"></i></a>
+            <a href="{% url 'administracion:modelos' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Ver modelos de la impresión"><i class="fa fa-cubes"></i></a>
+            <a href="{% url 'administracion:modelo_new' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Agregar modelos a la impresión"><i class="fa fa-plus"></i></a>
+            <a href="{% url 'administracion:impresion_delete' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Eliminar impresión"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+{% endblock %}
+
+{% block content_list_inf %}
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="" class="fa fa-caret-down"></a>
+                <a href="" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">
+                Costos extra
+            </h2>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-md">
+                        <a href="{% url 'administracion:new_costo_extra' id_producto %}"><button id="accion" class="btn btn-primary"> Agregar Costo <i class="fa fa-plus"></i></button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table mb-none" id="costos_extras">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Monto</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in costos %}
+                        <tr>
+                            <td>{{c.concept}}</td>
+                            <td>$ {{ c.amount }}</td>
+                            <td class="actions">
+                                <a href="{% url 'administracion:edit_costo_extra' c.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a>
+                                <a href="{% url 'administracion:delete_costo_extra' c.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="panel">
+        <div class="panel-body">
+            <div class="well well-sm warning">
+                    <h4 class="text-center">Total : $ {{producto.price}} </h4>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block new_scripts %}
+    <script>
+        $(document).ready(function (){
+            $('#costos_extras').dataTable({
+                "language":{
+                    "url":"{% static 'administracion/json/español.json' %}"
+                }
+            });
+        });
+    </script>
+{% endblock %}

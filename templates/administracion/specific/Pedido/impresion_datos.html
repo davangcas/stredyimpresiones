@@ -1,0 +1,61 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block content_list_sup %}
+    <section class="panel panel-featured panel-featured-dark">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">Configuración de la impresión</h2>
+        </header>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table mb-none">
+                    <thead>
+                        <tr>
+                            <th>Boquilla</th>
+                            <th>Velocidad de impresión</th>
+                            <th>Temperatura del extrusor</th>
+                            <th>Relleno</th>
+                            <th>Altura de capa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{impresion.nozzle}}</td>
+                            <td>{{ impresion.speed }} mm/s</td>
+                            <td>{{ impresion.material.fusion_point }} °C</td>
+                            <td>{{ impresion.infill }} %</td>
+                            <td>{{ impresion.layer }} mm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.modelo.name}}</td>
+        <td>{{obj.modelo.scale_x}} %</td>
+        <td>{{obj.modelo.scale_y}} %</td>
+        <td>{{obj.modelo.scale_z}} %</td>
+        <td>{{obj.quantity}}</td>
+    </tr>
+{% endblock %}
+
+{% block content_list_inf %}
+    <section class="panel">
+        <div class="panel-body">
+            <a href="{{ impresion.producto.link }}" target="_blank">
+            <div class="well well-sm success">
+                    <h4 class="text-center">Descargar modelos</h4>
+            </div>
+            </a>
+        </div>
+    </section>
+{% endblock %}

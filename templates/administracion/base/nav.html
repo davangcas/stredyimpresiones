@@ -1,0 +1,205 @@
+{% load static %}
+    <aside id="sidebar-left" class="sidebar-left">
+    
+        <div class="sidebar-header">
+            <div class="sidebar-title">
+                Men&uacute;
+            </div>
+            <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+            </div>
+        </div>
+    
+        <div class="nano">
+            <div class="nano-content">
+                <nav id="menu" class="nav-main" role="navigation">
+                    <ul class="nav nav-main">
+                        <li class="nav-active">
+                            <a href="{% url 'administracion:index' %}">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fas fa-user-tie" aria-hidden="true"></i>
+                                <span>Administradores</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:administradores_new' %}">
+                                        <i class="fa fa-plus-square-o"></i>
+                                        <span>Agregar administrador</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:administradores' %}">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Ver Administradores</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>Clientes</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:clientes_new' %}">
+                                        <i class="fa fa-plus-square-o"></i>
+                                        <span>Agregar Cliente</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:clientes' %}">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Ver Clientes</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-cubes" aria-hidden="true"></i>
+                                <span>Productos</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:productos_new' %}">
+                                        <i class="fa fa-plus-square-o"></i>
+                                        <span>Agregar Producto</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:productos' %}">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Ver Productos</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                <span>Pedidos</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:pedidos_new' %}">
+                                        <i class="fa fa-plus-square-o"></i>
+                                        <span>Agregar pedido</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:pedidos_impresiones_realizar' %}">
+                                        <i class="fa fa-cubes"></i>
+                                        <span>Impresiones a realizar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:pedidos' %}">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Ver pedidos</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-bank" aria-hidden="true"></i>
+                                <span>Caja</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:registro_new' %}">
+                                        <i class="fa fa-plus-square-o"></i>
+                                        <span>Nuevo Registro</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:caja_movimientos' %}">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                        <span>Detalles</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:extraccion' %}">
+                                        <i class="fa fa-usd"></i>
+                                        <span>Registrar Extracci&oacute;n</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-sliders" aria-hidden="true"></i>
+                                <span>Datos para el c&aacute;lculo</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:datos_edit' %}">
+                                        <i class="fa fa-edit "></i>
+                                        <span>Modificar Datos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:datos_detail' %}">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                        <span>Ver detalles</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:gastos' %}">
+                                        <i class="fa fa-money"></i>
+                                        <span>Costos Mensuales</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-barcode" aria-hidden="true"></i>
+                                <span>Insumo</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:colores' %}">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                        <span>Ver colores disponibles</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:materiales' %}">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Materiales</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-parent">
+                            <a>
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                <span>Publicaciones</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{% url 'administracion:publicacion_new' %}">
+                                        <i class="fa fa-plus-square-o"></i>
+                                        <span>Agregar publicación</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'administracion:publicaciones' %}">
+                                        <i class="fa fa-eye"></i>
+                                        <span>Ver publicaciones</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </aside>

@@ -1,0 +1,52 @@
+{% extends 'administracion/base/home.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                    </div>
+
+                    <h2 class="panel-title">{{ title }}</h2>
+                </header>
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered" method="post">{% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.name.label}}</label>
+                            <div class="col-md-6">
+                                {{form.name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.phone.label}}</label>
+                            <div class="col-md-6">
+                                {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="textareaAutosize">{{form.description.label}}</label>
+                            <div class="col-md-6">
+                                {{form.description}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">{{form.adress.label}}</label>
+                            <div class="col-md-6">
+                                {{form.adress}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button class="btn btn-primary">{{ action_button }}</button>
+                                <button type="reset" class="btn btn-default">Borrar Campos</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

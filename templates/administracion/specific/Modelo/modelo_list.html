@@ -1,0 +1,20 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:modelo_new' id_impresion %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.modelo.name}}</td>
+        <td>{{obj.modelo.scale_x}} %</td>
+        <td>{{obj.modelo.scale_y}} %</td>
+        <td>{{obj.modelo.scale_z}} %</td>
+        <td>{{obj.quantity}}</td>
+        <td class="actions">
+            <a href="{% url 'administracion:modelo_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar modelo"><i class="fa fa-pencil"></i></a>
+            <a href="{% url 'administracion:modelo_delete' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Eliminar modelo"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+{% endblock %}

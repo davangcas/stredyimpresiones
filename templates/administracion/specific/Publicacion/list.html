@@ -1,0 +1,23 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:publicacion_new' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.id}}</td>
+        <td>{{obj.date_created}}</td>
+        <td>{{obj.title}}</td>
+        <td>{{obj.product.name}}</td>
+        <td>
+            <img src="{{obj.image.url}}" alt="" height="40" width="40" class="img-circle">
+        </td>
+        <td class="actions">
+            <a href="{% url 'administracion:publicacion_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar Publicación"><i class="fa fa-pencil"></i></a>
+            <a href="{% url 'administracion:impresiones' obj.product.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Ver detalles del producto"><i class="fa fa-ellipsis-h"></i></a>
+            <a href="{% url 'administracion:publicacion_delete' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Eliminar publicación"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+{% endblock %}

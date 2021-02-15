@@ -1,0 +1,20 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:administradores_new' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.user.username}}</td>
+        <td>$ {{obj.salary}}</td>
+        <td>$ {{obj.amount}}</td>
+        <td class="actions">
+            <a href="{% url 'administracion:administradores_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar sueldo"><i class="fa fa-pencil"></i></a>
+            {% if administradores != 1 %}
+            <a href="{% url 'administracion:administradores_delete' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+            {% endif %}
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block content_list_sup %}
+    <section class="panel panel-featured panel-featured-success">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">Datos para el cálculo activos</h2>
+        </header>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table mb-none">
+                    <thead>
+                        <tr>
+                            <th>Horas por dia</th>
+                            <th>Dias imprimiendo</th>
+                            <th>Consumo</th>
+                            <th>Tarifa edelar</th>
+                            <th>% Fallos</th>
+                            <th>M&aacute;quinas disponibles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ dat.hs_per_day }}</td>
+                            <td>{{ dat.print_days }}</td>
+                            <td>{{ dat.watts }}</td>
+                            <td>{{ dat.edelar }}</td>
+                            <td>{{ dat.fail_percentage }}</td>
+                            <td>{{ dat.machines }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="well well-sm success">
+                        <h4 class="text-center">Precio Hora de Impresion : $ {{ dat.hs_price }}</h4>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+{% endblock %}
+
+{% block button %}
+    <a href="{% url 'administracion:datos_edit' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.id}}</td>
+        <td>{{obj.date_created}}</td>
+        <td>{{obj.hs_per_day}}</td>
+        <td>{{obj.print_days}}</td>
+        <td>{{obj.watts}}</td>
+        <td>{{obj.edelar}}</td>
+        <td>{{obj.fail_percentage}}</td>
+        <td>{{obj.machines}}</td>
+        <td>{{obj.hs_price}}</td>
+    </tr>
+{% endblock %}

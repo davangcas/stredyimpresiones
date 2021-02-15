@@ -1,0 +1,21 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:productos_new' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.id}}</td>
+        <td>{{obj.name}}</td>
+        <td><a href="{{obj.link}}" target="_blank"><i class="fa fa-eye"></i><span> Descargar Modelos</span></a></td>
+        <td>$ {{obj.price}}</td>
+        <td class="actions">
+            <a href="{% url 'administracion:productos_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Editar Producto"><i class="fa fa-pencil"></i></a>
+            <a href="{% url 'administracion:impresion_new' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Agregar Nueva impresion"><i class="fa fa-plus"></i></a>
+            <a href="{% url 'administracion:impresiones' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Ver detalles del producto"><i class="fa fa-ellipsis-h"></i></a>
+            <a href="{% url 'administracion:productos_eliminar' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Eliminar producto"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+{% endblock %}

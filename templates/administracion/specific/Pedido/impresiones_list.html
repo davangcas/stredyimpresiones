@@ -1,0 +1,59 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        {% if obj.color is None %}
+            <td>{{obj.id}}</td>
+            <td>{{obj.pedido.pedido.cliente.name}}</td>
+            <td>{{obj.pedido.producto.name}}</td>
+            <td>{{obj.color.color}} - {{obj.color.material}}</td>
+            <td><span class="label label-danger">{{ obj.status }}</span></td>
+            <td class="actions">
+                {% if obj.pedido.pedido.status != 'Cancelado' %}
+                <a href="{% url 'administracion:impresion_detalle_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Especificar color"><i class="fa fa-pencil"></i></a>
+                {% endif %}
+                <a href="{% url 'administracion:pedidos_impresiones_ver' obj.print.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Ver datos de impresión"><i class="fa fa-eye"></i></a>
+            </td>
+        {% else %}
+            {% if obj.status == 'No impreso' %}
+            <td>{{obj.id}}</td>
+            <td>{{obj.pedido.pedido.cliente.name}}</td>
+            <td>{{obj.pedido.producto.name}}</td>
+            <td>{{obj.color.color}} - {{obj.color.material}}</td>
+            <td><span class="label label-danger">{{ obj.status }}</span></td>
+            <td class="actions">
+                <a href="{% url 'administracion:pedidos_impresiones_ver' obj.print.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Ver datos de impresión"><i class="fa fa-eye"></i></a>
+                {% if obj.pedido.pedido.status != 'Cancelado' %}
+                <a href="{% url 'administracion:impresion_detalle_edit' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Modificar color"><i class="fa fa-pencil"></i></a>
+                <a href="{% url 'administracion:impresion_cambio' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Imprimiendose"><i class="fa fa-cogs"></i></a>
+                {% endif %}
+            </td>
+            {% endif %}
+            {% if obj.status == 'Imprimiendose' %}
+            <td>{{obj.id}}</td>
+            <td>{{obj.pedido.pedido.cliente.name}}</td>
+            <td>{{obj.pedido.producto.name}}</td>
+            <td>{{obj.color.color}} - {{obj.color.material}}</td>
+            <td><span class="label label-warning">{{ obj.status }}</span></td>
+            <td class="actions">
+                <a href="{% url 'administracion:pedidos_impresiones_ver' obj.print.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Ver datos de impresión"><i class="fa fa-eye"></i></a>
+                {% if obj.pedido.pedido.status != 'Cancelado' %}
+                <a href="{% url 'administracion:impresion_cancelar' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Cancelar impresion"><i class="fa fa-times-circle"></i></a>
+                <a href="{% url 'administracion:impresion_cambio' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Listo"><i class="fa fa-check-circle"></i></a>
+                {% endif %}
+            </td>
+            {% endif %}
+            {% if obj.status == 'Listo' %}
+            <td>{{obj.id}}</td>
+            <td>{{obj.pedido.pedido.cliente.name}}</td>
+            <td>{{obj.pedido.producto.name}}</td>
+            <td>{{obj.color.color}} - {{obj.color.material}}</td>
+            <td><span class="label label-success">{{ obj.status }}</span></td>
+            <td class="actions">
+                <a href="{% url 'administracion:pedidos_impresiones_ver' obj.print.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Ver datos de impresión"><i class="fa fa-eye"></i></a>
+            </td>
+            {% endif %}
+        {% endif %}
+    </tr>
+{% endblock %}

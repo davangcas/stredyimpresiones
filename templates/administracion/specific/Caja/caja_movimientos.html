@@ -1,0 +1,214 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block content_list_sup %}
+    <div class="row">
+        <div class="col-md-6 col-lg-12 col-xl-6">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-primary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-primary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Total</h4>
+                                        <div class="info">
+                                            <strong class="amount">$ {{ caja.amount }}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-secondary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-secondary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Blaster</h4>
+                                        <div class="info">
+                                            <strong class="amount">$ {{ caja.amount_blaster }}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-quartenary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-quartenary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Monto en posesión</h4>
+                                        <div class="info">
+                                            <strong class="amount">$ {{ request.user.profile.amount }}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <section class="panel panel-featured-left panel-featured-tertiary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                    <div class="summary-icon bg-tertiary">
+                                        <i class="fa fa-usd"></i>
+                                    </div>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="title">Disponible para extracción</h4>
+                                        <div class="info">
+                                            <strong class="amount">$ {{ request.user.profile.sueldo }}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block button %}
+    <a href="{% url 'administracion:registro_new' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.id}}</td>
+        <td>{{obj.date_created}}</td>
+        <td>{{obj.concepto}}</td>
+        <td>$ {{obj.ingreso}}</td>
+        <td>$ {{obj.egreso}}</td>
+        <td>{{obj.pay_by}}</td>
+        <td>{{obj.user.first_name}} {{obj.user.last_name}}</td>
+    </tr>
+{% endblock %}
+
+{% block content_list_inf %}
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="" class="fa fa-caret-down"></a>
+                <a href="" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">
+                Historial de extracciones propias
+            </h2>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-md">
+                        <a href="{% url 'administracion:extraccion' %}"><button id="accion" class="btn btn-primary"> Registrar extracción <i class="fa fa-plus"></i></button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table mb-none" id="propias">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Pagado por</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in e_propia %}
+                        <tr>
+                            <td>{{e.id}}</td>
+                            <td>{{ e.date }}</td>
+                            <td>{{ e.amount }}</td>
+                            <td>{{ e.pay_user }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="" class="fa fa-caret-down"></a>
+                <a href="" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">
+                Extracciones realizadas por otros usuarios
+            </h2>
+        </header>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table mb-none" id="demas">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Usuario</th>
+                            <th>Monto</th>
+                            <th>Pagado por</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in e_todos %}
+                        <tr>
+                            <td>{{e.id}}</td>
+                            <td>{{ e.date }}</td>
+                            <td>{{ e.user_make.first_name }} {{ e.user_make.last_name }}</td>
+                            <td>{{ e.amount }}</td>
+                            <td>{{ e.pay_user }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block new_scripts %}
+    <script>
+        $(document).ready(function (){
+            $('#propias').dataTable({
+                "language":{
+                    "url":"{% static 'administracion/json/español.json' %}"
+                }
+            });
+        });
+        $(document).ready(function (){
+            $('#demas').dataTable({
+                "language":{
+                    "url":"{% static 'administracion/json/español.json' %}"
+                }
+            });
+        });
+    </script>
+{% endblock %}

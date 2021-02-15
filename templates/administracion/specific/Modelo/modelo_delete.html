@@ -1,0 +1,32 @@
+{% extends 'administracion/base/home.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                    </div>
+
+                    <h2 class="panel-title">{{ title }}</h2>
+                </header>
+                <div class="panel-body">
+                    <form class="form-horizontal form-bordered" method="post">{% csrf_token %}
+                        <div class="alert alert-info">
+                            ¿ Desea eliminar el modelo <strong>{{ object.modelo.name }}</strong> de la impresión ?
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="submit" class="btn btn-warning"> Eliminar modelo </button>
+                                <a href="{% url 'administracion:productos' %}" class="btn btn-default"> Cancelar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

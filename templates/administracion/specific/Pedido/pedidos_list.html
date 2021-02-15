@@ -1,0 +1,43 @@
+{% extends 'administracion/base/list.html' %}
+{% load static %}
+
+{% block button %}
+    <a href="{% url 'administracion:pedidos_new' %}"><button id="accion" class="btn btn-primary"> {{ add_button_name }} <i class="fa fa-plus"></i></button></a>
+{% endblock %}
+
+{% block table_values %}
+    <tr class="gradeX">
+        <td>{{obj.id}}</td>
+        <td>{{obj.date_created}}</td>
+        <td>{{obj.cliente}}</td>
+        <td>$ {{obj.total}}</td>
+        {% if obj.status == 'Recibido' %}
+        <td><span class="label label-warning">{{ obj.status }}</span></td>
+        <td class="actions">
+            <a href="{% url 'administracion:pedido_agregar_producto' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Agregar producto"><i class="fa fa-plus"></i></a>
+            <a href="{% url 'administracion:pedidos_detalle' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-eye"></i></a>
+            <a href="{% url 'administracion:pedidos_cancelado' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Cancelar pedido"><i class="fa fa-times-circle"></i></a>
+        </td>
+        {% endif %}
+        {% if obj.status == 'Listo' %}
+        <td><span class="label label-primary">{{ obj.status }}</span></td>
+        <td class="actions">
+            <a href="{% url 'administracion:pedidos_pagado' obj.id %}" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="Pedido pagado"><i class="fa fa-usd"></i></a>
+            <a href="{% url 'administracion:pedido_agregar_producto' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Agregar producto"><i class="fa fa-plus"></i></a>
+            <a href="{% url 'administracion:pedidos_detalle' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-eye"></i></a>
+        </td>
+        {% endif %}
+        {% if obj.status == 'Pagado' %}
+        <td><span class="label label-success">{{ obj.status }}</span></td>
+        <td>
+            <a href="{% url 'administracion:pedidos_detalle' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-eye"></i></a>
+        </td>
+        {% endif %}
+        {% if obj.status == 'Cancelado' %}
+        <td><span class="label label-danger">{{ obj.status }}</span></td>
+        <td>
+            <a href="{% url 'administracion:pedidos_detalle' obj.id %}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fa fa-eye"></i></a>
+        </td>
+        {% endif %}
+    </tr>
+{% endblock %}
