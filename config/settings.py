@@ -27,7 +27,7 @@ SECRET_KEY = 't$bi0%p7zcufv*8&&&2_l+y8!=3*xc2*aa#lr#x5jl++@$m%)3'
 DEBUG = True
 LOCAL_DEPLOY = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
