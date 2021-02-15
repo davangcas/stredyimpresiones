@@ -22,7 +22,7 @@ from config.settings import LOCAL_DEPLOY
 urlpatterns = [
     path('davangcas/', admin.site.urls),
     path('admin/', include('apps.administracion.urls')),
-    path('', include('apps.principal.urls')),
+    #path('', include('apps.principal.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
